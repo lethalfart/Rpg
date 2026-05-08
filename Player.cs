@@ -2,7 +2,7 @@ namespace Rpg;
 
 public class Player
 {
-    Random random = new Random();
+    
     public string Name;
     public int Health;
     public int Attack;
@@ -15,7 +15,7 @@ public class Player
         Health = 100;
         Attack = 10;
         Potions = 3;
-        critChance = random.Next(0, 10);
+        
 
     }
 
@@ -38,7 +38,9 @@ public class Player
         }
     }
 
-
-
-
+    public void crit()
+    {
+        Attack = Attack + 15;
+    }
+    
 }

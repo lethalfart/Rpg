@@ -1,4 +1,5 @@
 ﻿using Rpg;
+Random random = new Random();
 
 string playerName;
 string playerOption;
@@ -15,9 +16,18 @@ Goblin goblin = new Goblin();
 
 void playerHit()
 {
+    player.critChance = random.Next(1, 11);
+    if (player.critChance == 10)
+    {
+        player.Attack = player.Attack + 15;
+        Console.Write("Critical hit! Your attack does 15 more damage :p");
+    }
     goblin.Health = goblin.Health - player.Attack;
     Console.WriteLine($"\nYou hit the {goblin.Name} for {player.Attack} damage!\nThe {goblin.Name} now has {goblin.Health} health!\nPress enter to continue....\n");
-    Console.ReadKey();
+    if (player.critChance == 10)
+    {
+        player.Attack = player.Attack - 15;
+    }
 }
 
 void goblinHit()
